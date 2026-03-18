@@ -1,0 +1,19 @@
+{
+  "name": "@genmedical/api-client",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    "./client": "./src/client/index.ts",
+    "./error": "./src/error/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@genmedical/core": "workspace:*",
+    "axios": "^1.13.6"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}

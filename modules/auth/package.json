@@ -1,0 +1,21 @@
+{
+  "name": "@genmedical/auth",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    "./commands": "./application/commands/index.ts",
+    "./queries": "./application/queries/index.ts",
+    "./hooks": "./presentation/hooks/index.ts",
+    "./pages": "./presentation/pages/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@genmedical/core": "workspace:*",
+    "@genmedical/api-client": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}

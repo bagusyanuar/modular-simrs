@@ -1,0 +1,15 @@
+{
+  "name": "@genmedical/core",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    "./error": "./src/error/index.ts",
+    "./use-case": "./src/use-case/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}
