@@ -10,6 +10,9 @@
     "declarationMap": true,
     "sourceMap": true,
     "noUncheckedIndexedAccess": true,
-    "noImplicitReturns": true
+    "noImplicitReturns": true,
+    "paths": {
+      "@genmedical/ui/*": ["./packages/ui/src/components/*/index.ts"]
+    }
   }
 }
