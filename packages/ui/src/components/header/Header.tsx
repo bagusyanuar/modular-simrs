@@ -8,11 +8,11 @@ interface HeaderProps {
 
 export function Header({ isCollapsed, onToggle, userMenu }: HeaderProps) {
   return (
-    <header className="flex items-center justify-between px-6 h-[var(--header-height)] bg-[var(--color-header)] border-b border-[var(--color-header-border)] flex-shrink-0">
+    <header className="flex items-center justify-between px-6 h-15 bg-header border-b border-header-border shrink-0">
       {/* Toggle button mobile */}
       <button
         onClick={onToggle}
-        className="p-2 rounded-lg text-[var(--color-text-secondary)] hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary)] transition-colors duration-150 lg:hidden"
+        className="p-2 rounded-lg text-ink-muted hover:bg-primary-subtle hover:text-primary transition-colors duration-150 lg:hidden"
       >
         <svg
           className="w-5 h-5"
@@ -49,7 +49,7 @@ function DarkModeToggle() {
   return (
     <button
       onClick={toggleDark}
-      className="p-2 rounded-lg text-[var(--color-text-secondary)] hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary)] transition-colors duration-150"
+      className="p-2 rounded-lg text-ink-muted hover:bg-primary-subtle hover:text-primary transition-colors duration-150"
     >
       <svg
         className="w-5 h-5 dark:hidden"

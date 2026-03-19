@@ -8,7 +8,7 @@ const LoginPage = lazy(() =>
 );
 
 const DashboardPage = lazy(() =>
-  import('../pages/DashboardPage').then((m) => ({ default: m.DashboardPage }))
+  import('@genmedical/dashboard/pages').then((m) => ({ default: m.DashboardPage }))
 );
 
 function PageLoader() {

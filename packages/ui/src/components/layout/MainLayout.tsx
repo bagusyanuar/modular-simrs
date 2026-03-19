@@ -28,7 +28,7 @@ export function MainLayout({
   const { isCollapsed, toggle } = useSidebar();
 
   return (
-    <div className="flex h-screen overflow-hidden bg-[var(--color-bg)]">
+    <div className="flex h-screen overflow-hidden bg-canvas">
       <Sidebar
         isCollapsed={isCollapsed}
         navItems={navItems}

@@ -24,17 +24,16 @@ export function Sidebar({
           ? 'var(--sidebar-collapsed-width)'
           : 'var(--sidebar-width)',
       }}
-      className="flex flex-col h-full bg-[var(--color-sidebar)] border-r border-[var(--color-sidebar-border)] transition-all duration-300 overflow-hidden flex-shrink-0"
+      className="flex flex-col h-full bg-aside border-r border-aside-border transition-all duration-300 overflow-hidden shrink-0"
     >
-      {/* Logo & App Name */}
-      <div className="flex items-center gap-3 px-4 h-[var(--header-height)] border-b border-[var(--color-sidebar-border)] flex-shrink-0">
+      <div className="flex items-center gap-3 px-4 h-15 border-b border-aside-border shrink-0">
         {logo && (
-          <span className="w-8 h-8 flex-shrink-0 flex items-center justify-center text-[var(--color-primary)]">
+          <span className="w-8 h-8 shrink-0 flex items-center justify-center text-primary">
             {logo}
           </span>
         )}
         {!isCollapsed && (
-          <span className="font-semibold text-[var(--color-text-primary)] truncate">
+          <span className="font-semibold text-primary truncate">
             {appName}
           </span>
         )}
@@ -48,10 +47,10 @@ export function Sidebar({
       </nav>
 
       {/* Toggle Button */}
-      <div className="px-3 py-4 border-t border-[var(--color-sidebar-border)] flex-shrink-0">
+      <div className="px-3 py-4 border-t border-aside-border shrink-0">
         <button
           onClick={onToggle}
-          className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-[var(--color-text-secondary)] hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary)] transition-colors duration-150"
+          className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-ink-muted hover:bg-primary-subtle hover:text-primary transition-colors duration-150"
         >
           <svg
             className={`w-5 h-5 transition-transform duration-300 ${isCollapsed ? 'rotate-180' : ''}`}
