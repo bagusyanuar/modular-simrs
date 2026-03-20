@@ -2,6 +2,7 @@ import { type ReactNode } from 'react';
 import { useSidebar } from '../../hooks/useSidebar';
 import { Sidebar } from '../sidebar';
 import { Header } from '../header';
+import { Outlet } from 'react-router-dom';
 
 export interface NavItem {
   label: string;
@@ -11,7 +12,6 @@ export interface NavItem {
 }
 
 export interface MainLayoutProps {
-  children: ReactNode;
   navItems: NavItem[];
   appName?: string;
   logo?: ReactNode;
@@ -19,7 +19,6 @@ export interface MainLayoutProps {
 }
 
 export function MainLayout({
-  children,
   navItems,
   appName = 'Genmedical',
   logo,
@@ -42,7 +41,9 @@ export function MainLayout({
           onToggle={toggle}
           userMenu={userMenu}
         />
-        <main className="flex-1 overflow-y-auto p-6">{children}</main>
+        <main className="flex-1 overflow-y-auto p-6">
+          <Outlet />
+        </main>
       </div>
     </div>
   );

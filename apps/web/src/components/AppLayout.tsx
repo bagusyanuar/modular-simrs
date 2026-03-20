@@ -89,10 +89,6 @@ const logo = (
   </svg>
 );
 
-export function AppLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <MainLayout navItems={navItems} appName="Genmedical" logo={logo}>
-      {children}
-    </MainLayout>
-  );
+export function AppLayout() {
+  return <MainLayout navItems={navItems} appName="Genmedical" logo={logo} />;
 }

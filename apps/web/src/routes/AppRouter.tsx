@@ -1,47 +1,43 @@
-import { lazy, Suspense } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  Navigate,
+  Outlet,
+  type RouteObject,
+} from 'react-router-dom';
 import { ProtectedRoute } from './ProtectedRoute';
+import { PublicRoute } from './PublicRoute';
 import { AppLayout } from '../components/AppLayout';
+import { AuthProvider } from '@genmedical/auth/hooks';
+import { authRoutes } from '@genmedical/auth/routes';
+import { dashboardRoutes } from '@genmedical/dashboard/routes';
 
-const LoginPage = lazy(() =>
-  import('@genmedical/auth/pages').then((m) => ({ default: m.LoginPage }))
-);
+export const routes: RouteObject[] = [
+  {
+    element: (
+      <AuthProvider>
+        <Outlet />
+      </AuthProvider>
+    ),
+    children: [
+      {
+        element: <PublicRoute />,
+        children: authRoutes,
+      },
+      {
+        element: <ProtectedRoute />,
+        children: [
+          {
+            element: <AppLayout />,
+            children: [...dashboardRoutes],
+          },
+        ],
+      },
+      {
+        path: '*',
+        element: <Navigate to="/" replace />,
+      },
+    ],
+  },
+];
 
-const DashboardPage = lazy(() =>
-  import('@genmedical/dashboard/pages').then((m) => ({ default: m.DashboardPage }))
-);
-
-function PageLoader() {
-  return (
-    <div className="min-h-screen flex items-center justify-center">
-      <p className="text-sm text-[var(--color-text-secondary)]">Memuat...</p>
-    </div>
-  );
-}
-
-export function AppRouter() {
-  return (
-    <Suspense fallback={<PageLoader />}>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-
-        <Route element={<ProtectedRoute />}>
-          <Route
-            element={
-              <AppLayout>
-                <Suspense fallback={<PageLoader />}>
-                  <DashboardPage />
-                </Suspense>
-              </AppLayout>
-            }
-          >
-            <Route path="/dashboard" element={<DashboardPage />} />
-          </Route>
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
-        </Route>
-
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </Suspense>
-  );
-}
+export const router = createBrowserRouter(routes);
